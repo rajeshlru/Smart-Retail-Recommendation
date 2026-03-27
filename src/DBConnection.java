@@ -1,10 +1,26 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/smart_retail_db";
-    private static final String USER = "rajesh";
-    private static final String PASSWORD = "#Rajesh@291205";
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
+
+    static {
+        try {
+            Properties props = new Properties();
+            FileInputStream fis = new FileInputStream("config.properties");
+            props.load(fis);
+
+            URL = props.getProperty("db.url");
+            USER = props.getProperty("db.user");
+            PASSWORD = props.getProperty("db.password");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static Connection getConnection() {
         try {
