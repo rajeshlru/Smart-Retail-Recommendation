@@ -23,6 +23,7 @@ public class Main {
         boolean running = true;
 
         while (running) {
+
             System.out.println("\n====================================================");
             System.out.println("        SMART RETAIL RECOMMENDATION ENGINE");
             System.out.println("====================================================");
@@ -35,7 +36,6 @@ public class Main {
             sc.nextLine(); // ⭐ IMPORTANT FIX
 
             switch (mainChoice) {
-
                 case 1:
                     customerShopping(sc, categoryDAO, productDAO, cartService, recommendationEngine, transactionDAO);
                     break;
